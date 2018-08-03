@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.WSA.Input;
 
 public class InteractionHelper : MonoBehaviour
 {
@@ -12,8 +14,21 @@ public class InteractionHelper : MonoBehaviour
 
     void Start ()
     {
-		
-	}
+		GestureRecognizer gestureRecognizer = new GestureRecognizer();
+        gestureRecognizer.SetRecognizableGestures(GestureSettings.Tap);
+        // TODO change this deprecated delegate
+        gestureRecognizer.TappedEvent += GestureRecognizer_TappedEvent;
+        gestureRecognizer.StartCapturingGestures();
+    }
+
+    private void GestureRecognizer_TappedEvent(InteractionSourceKind source, int tapCount, Ray headRay)
+    {
+        //throw new System.NotImplementedException();
+        if (_objectInFocus == null) { return; }
+        Debug.Log("Source: " + source.ToString() + " tapCount: " + tapCount + " headRay direction: " + headRay.direction);
+        _objectInFocus.SendMessage("DoDrop");
+    }
+
 	
 	void Update ()
 	{
