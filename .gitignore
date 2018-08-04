@@ -5,6 +5,8 @@
 /[Bb]uilds/
 /Assets/AssetStoreTools*
 /VS/
+/VS-net/
+/Assets/HoloToolkit/
 
 # Visual Studio 2015/2017 cache directory
 /.vs/

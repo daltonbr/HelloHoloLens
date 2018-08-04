@@ -59,7 +59,7 @@ public class InteractionHelper : MonoBehaviour
 	        if (renderer == null) { return; }
 
 	        _oldMaterial = renderer.material;
-	        renderer.material = MaterialInGaze;
+	        //renderer.material = MaterialInGaze;
 	        _objectInFocus = hitObject;
 	    }
 	    else
@@ -67,7 +67,7 @@ public class InteractionHelper : MonoBehaviour
 	        if (_objectInFocus == null) return;
 
 	        var renderer = _objectInFocus.GetComponent<Renderer>();
-	        renderer.material = _oldMaterial;
+	        //renderer.material = _oldMaterial;
 	        _objectInFocus = null;
 	    }
 	}
